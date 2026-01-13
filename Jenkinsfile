@@ -2,16 +2,16 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone Repo') {
+        stage('Checkout') {
             steps {
-                git 'https://github.com/singh-pranjal/simple-ci-cd.git'
+                checkout scm
             }
         }
 
-        stage('Deploy to Nginx') {
+        stage('Deploy') {
             steps {
                 sh '''
-                sudo cp index.html /usr/share/nginx/html/index.html
+                cp index.html /usr/share/nginx/html/index.html
                 '''
             }
         }
